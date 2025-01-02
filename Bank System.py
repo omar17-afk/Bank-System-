@@ -68,6 +68,16 @@ def reset_password(accounts):
     
     print("Username not found.")
 
+def delete_account(accounts):
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    for account in accounts:
+        if account["username"] == username and account["password"] == password:
+            accounts.remove(account)
+            print(f"Account '{username}' deleted successfully.")
+            return
+    print("Invalid username or password.")
+
 def main():
     accounts = []
 
@@ -78,7 +88,8 @@ def main():
         print("3. Withdraw")
         print("4. Check Balance")
         print("5. Reset Password") 
-        print("6. Exit")
+        print("6. Delete Account")
+        print("7. Exit")
 
         choice = input("Enter your choice (1-6): ")
 
@@ -98,6 +109,9 @@ def main():
             reset_password(accounts)
 
         elif choice == '6':
+            delete_account(accounts)
+
+        elif choice == '7':
             print("Exiting the Bank Account System. Goodbye!")
             break
 
